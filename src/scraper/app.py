@@ -13,14 +13,17 @@ if scrape and url:
 
     st.markdown("### Text Content")
     st.text_area("", response["content"], height=400)
+    st.markdown("Number of tokens:  __%d__" % (len(response["content"]) / 4))
 
     response = scraply.scrape(url, format="markdown")
     st.markdown("### Markdown Content")
     st.text_area("", response["content"], height=400)
+    st.markdown("Number of tokens:  __%d__" % (len(response["content"]) / 4))
 
     response = scraply.scrape(url, format="clean_html")
     st.markdown("### HTML Content")
     st.text_area("", response["content"], height=400)
+    st.markdown("Number of tokens:  __%d__" % (len(response["content"]) / 4))
 
     st.markdown("### JSON Response")
     st.json(response, expanded=False)
