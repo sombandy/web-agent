@@ -1,4 +1,3 @@
-import json
 import os
 from dotenv import load_dotenv
 from scrapfly import ScrapeConfig, ScrapflyClient, ScrapeApiResponse
@@ -6,13 +5,16 @@ from scrapfly import ScrapeConfig, ScrapflyClient, ScrapeApiResponse
 load_dotenv()
 
 class ScrapFly:
-    text_page = "tmp/text.txt"
-    html_page = "tmp/html.html"
-    markdown_page = "tmp/markdown.md"
+    data_dir = "data"
+    text_page = os.path.join(data_dir, "text.txt")
+    html_page = os.path.join(data_dir, "html.html")
+    markdown_page = os.path.join(data_dir, "markdown.md")
 
     def __init__(self):
+        if not os.path.exists(self.data_dir):
+            os.makedirs(self.data_dir)
+
         self.scrapfly = ScrapflyClient(key=os.getenv("SCRAPFLY_API_KEY"))
-        self.screenshot_url = "pages/img/clear.png"
 
     def scrape(self, url, **kwargs):
         format = kwargs.get("format", "text")
