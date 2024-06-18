@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "web-agent"
+version = "0.1.0"
+description = ""
+authors = ["Somnath Banerjee <somnath.banerjee@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "src" },]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.35.0"
+python-dotenv = "^1.0.1"
+scrapfly-sdk = {extras = ["all"], version = "^0.8.17"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
