@@ -8,20 +8,19 @@ scrape = st.button("Scrape")
 
 if scrape and url:
     scraply = ScrapFly()
-    response = scraply.scrape(url, format="text")
-    st.sidebar.page_link(scraply.screenshot_url, label="Screenshot")
 
     st.markdown("### Text Content")
+    response = scraply.scrape(url, format="text")
     st.text_area("", response["content"], height=400)
     st.markdown("Number of tokens:  __%d__" % (len(response["content"]) / 4))
 
-    response = scraply.scrape(url, format="markdown")
     st.markdown("### Markdown Content")
+    response = scraply.scrape(url, format="markdown")
     st.text_area("", response["content"], height=400)
     st.markdown("Number of tokens:  __%d__" % (len(response["content"]) / 4))
 
-    response = scraply.scrape(url, format="clean_html")
     st.markdown("### HTML Content")
+    response = scraply.scrape(url, format="clean_html")
     st.text_area("", response["content"], height=400)
     st.markdown("Number of tokens:  __%d__" % (len(response["content"]) / 4))
 

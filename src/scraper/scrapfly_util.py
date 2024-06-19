@@ -5,10 +5,11 @@ from scrapfly import ScrapeConfig, ScrapflyClient, ScrapeApiResponse
 load_dotenv()
 
 class ScrapFly:
-    data_dir = "data"
+    data_dir = "crawl_data"
     text_page = os.path.join(data_dir, "text.txt")
     html_page = os.path.join(data_dir, "html.html")
     markdown_page = os.path.join(data_dir, "markdown.md")
+    screenshot_url = ""
 
     def __init__(self):
         if not os.path.exists(self.data_dir):
@@ -30,7 +31,7 @@ class ScrapFly:
         api_response: ScrapeApiResponse = self.scrapfly.scrape(config)
         scrape_result = api_response.scrape_result
 
-        self.screenshot_url = (
+        ScrapFly.screenshot_url = (
             scrape_result["screenshots"]["main"]["url"] + "?key=" + os.getenv("SCRAPFLY_API_KEY")
         )
         self.content = scrape_result["content"]

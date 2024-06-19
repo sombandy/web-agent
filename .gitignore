@@ -1,4 +1,4 @@
 .env
-data/
+crawl_data/
 */__pycache__/
 *.cpython*
