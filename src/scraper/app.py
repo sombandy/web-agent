@@ -3,7 +3,7 @@ import streamlit as st
 from src.scraper.scrapfly_util import ScrapFly
 
 url = st.text_input("Website", "https://clear.ventures/")
-task = st.text_area("Task", "Who are the general partners?")
+task = st.text_area("Task", "For future use only!")
 scrape = st.button("Scrape")
 
 if scrape and url:
